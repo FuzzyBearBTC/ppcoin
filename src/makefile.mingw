@@ -1,5 +1,6 @@
 # Copyright (c) 2009-2010 Satoshi Nakamoto
 # Copyright (c) 2012 The PPCoin developers
+# Copyright (c) 2014 The Peercoin developers
 # Distributed under the MIT/X11 software license, see the accompanying
 # file license.txt or http://www.opensource.org/licenses/mit-license.php.
 
@@ -52,10 +53,10 @@
 #     mkdir miniupnpc
 #     cp *.h miniupnpc/
 #
-# - Build ppcoind.exe
+# - Build peercoind.exe
 #   in MinGW MSYS
 #     cd ppcoin/src
-#     make ppcoind.exe -f makefile.mingw USE_UPNP=1
+#     make peercoind.exe -f makefile.mingw USE_UPNP=1
 #
 #
 
@@ -122,12 +123,12 @@ OBJS= \
     obj/kernel.o
 
 
-all: ppcoind.exe
+all: peercoind.exe
 
 obj/%.o: %.cpp $(HEADERS)
 	g++ -c $(CFLAGS) -o $@ $<
 
-ppcoind.exe: $(OBJS:obj/%=obj/%)
+peercoind.exe: $(OBJS:obj/%=obj/%)
 	g++ $(CFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)
 
 TESTOBJS := $(patsubst test/%.cpp,obj-test/%.o,$(wildcard test/*.cpp))
@@ -139,7 +140,7 @@ test_bitcoin.exe: $(TESTOBJS) $(filter-out obj/init.o,$(OBJS:obj/%=obj/%))
 	g++ $(CFLAGS) -o $@ $(LIBPATHS) $^ -lboost_unit_test_framework $(LIBS)
 
 clean:
-	-del /Q ppcoind test_bitcoin
+	-del /Q peercoind test_bitcoin
 	-del /Q obj\*
 	-del /Q obj-test\*
 	-del /Q build.h

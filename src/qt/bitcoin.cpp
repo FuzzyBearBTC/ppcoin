@@ -1,6 +1,7 @@
 /*
  * W.J. van der Laan 2011-2012
  * The PPCoin Developers 2013
+ * The Peercoin Developers 2014
  */
 #include "bitcoingui.h"
 #include "clientmodel.h"
@@ -125,7 +126,7 @@ std::string _(const char* psz)
 static void handleRunawayException(std::exception *e)
 {
     PrintExceptionContinue(e, "Runaway exception");
-    QMessageBox::critical(0, "Runaway exception", BitcoinGUI::tr("A fatal error occured. PPCoin can no longer continue safely and will quit.") + QString("\n\n") + QString::fromStdString(strMiscWarning));
+    QMessageBox::critical(0, "Runaway exception", BitcoinGUI::tr("A fatal error occured. Peercoin can no longer continue safely and will quit.") + QString("\n\n") + QString::fromStdString(strMiscWarning));
     exit(1);
 }
 
@@ -141,7 +142,7 @@ int main(int argc, char *argv[])
     // Do this early as we don't want to bother initializing if we are just calling IPC
     for (int i = 1; i < argc; i++)
     {
-        if (strlen(argv[i]) >= 7 && strncasecmp(argv[i], "ppcoin:", 7) == 0)
+        if (strlen(argv[i]) >= 7 && strncasecmp(argv[i], "peercoin:", 7) == 0)
         {
             const char *strURI = argv[i];
             try {
@@ -178,12 +179,12 @@ int main(int argc, char *argv[])
 
     // Application identification (must be set before OptionsModel is initialized,
     // as it is used to locate QSettings)
-    app.setOrganizationName("PPCoin");
-    app.setOrganizationDomain("ppcoin.org");
+    app.setOrganizationName("Peercoin");
+    app.setOrganizationDomain("peercoin.net");
     if(GetBoolArg("-testnet")) // Separate UI settings for testnet
-        app.setApplicationName("PPCoin-Qt-testnet");
+        app.setApplicationName("Peercoin-Qt-testnet");
     else
-        app.setApplicationName("PPCoin-Qt");
+        app.setApplicationName("Peercoin-Qt");
 
     // ... then GUI settings:
     OptionsModel optionsModel;
@@ -268,7 +269,7 @@ int main(int argc, char *argv[])
                 // Check for URI in argv
                 for (int i = 1; i < argc; i++)
                 {
-                    if (strlen(argv[i]) >= 7 && strncasecmp(argv[i], "ppcoin:", 7) == 0)
+                    if (strlen(argv[i]) >= 7 && strncasecmp(argv[i], "peercoin:", 7) == 0)
                     {
                         const char *strURI = argv[i];
                         try {

@@ -1,3 +1,4 @@
+Copyright (c) 2014 Peercoin Developers
 Copyright (c) 2012-2013 PPCoin Developers
 Copyright (c) 2009-2012 Bitcoin Developers
 Distributed under the MIT/X11 software license, see the accompanying file
@@ -12,10 +13,10 @@ Mac OS X bitcoind build instructions
 Laszlo Hanyecz <solar@heliacal.net>
 Douglas Huff <dhuff@jrbobdobbs.org>
 
-Modified for PPCoin by Jeff Larkin <jefflarkin@gmail.com>
+Modified for Peercoin by Jeff Larkin <jefflarkin@gmail.com>
 
 
-See readme-qt.rst for instructions on building PPCoin QT, the
+See readme-qt.rst for instructions on building Peercoin QT, the
 graphical user interface.
 
 Tested on 10.5 and 10.6 intel.  PPC is not supported because it's big-endian.
@@ -52,8 +53,8 @@ make -f makefile.osx
 make -f makefile.osx RELEASE=true 64BIT=true
 
 Run:
-  ./ppcoind --help  # for a list of command-line options.
+  ./peercoind --help  # for a list of command-line options.
 Run
-  ./ppcoind -daemon # to start the bitcoin daemon.
+  ./peercoind -daemon # to start the bitcoin daemon.
 Run
-  ./ppcoind help # When the daemon is running, to get a list of RPC commands
+  ./peercoind help # When the daemon is running, to get a list of RPC commands

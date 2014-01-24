@@ -1,6 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
 // Copyright (c) 2011-2013 The PPCoin developers
+// Copyright (c) 2014 The Peercoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -250,7 +251,7 @@ bool GetMyExternalIP(CNetAddr& ipRet)
 
 void ThreadGetMyExternalIP(void* parg)
 {
-    // Wait for IRC to get it first - disabled with ppcoin
+    // Wait for IRC to get it first - disabled with peercoin
     if (false && GetBoolArg("-irc", false))
     {
         for (int i = 0; i < 2 * 60; i++)
@@ -904,7 +905,7 @@ void ThreadMapPort2(void* parg)
             }
         }
 
-        string strDesc = "PPCoin " + FormatFullVersion();
+        string strDesc = "Peercoin " + FormatFullVersion();
 #ifndef UPNPDISCOVER_SUCCESS
         /* miniupnpc 1.5 */
         r = UPNP_AddPortMapping(urls.controlURL, data.first.servicetype,
@@ -995,11 +996,49 @@ void MapPort(bool /* unused fMapPort */)
 // Each pair gives a source name and a seed name.
 // The first name is used as information source for addrman.
 // The second name should resolve to a list of seed addresses.
-// testnet dns seed begins with 't', all else are ppcoin dns seeds.
+// testnet dns seed begins with 't', all else are peercoin dns seeds.
+// untrusted dns seed begins with 'u', all else are peercoin dns seeds.
 static const char *strDNSSeed[][2] = {
     {"seed", "seed.ppcoin.net"},
     {"altcointech", "dnsseed.ppc.altcointech.net"},
     {"tnseed", "tnseed.ppcoin.net"},
+    {"Forum", "www.peercointalk.org"},
+    {"tnseed1", "66.90.146.146"},
+    {"unseed2", "91.156.102.128"},
+    {"unseed3", "110.174.124.20"},
+    {"unseed4", "67.14.164.114"},
+    {"unseed5", "37.209.40.22"},
+    {"unseed6", "50.71.216.165"},
+    {"unseed7", "109.108.236.208"},
+    {"unseed8", "173.28.37.150"},
+    {"unseed9", "68.102.86.156"},
+    {"unseed10", "213.251.187.24"},
+    {"unseed11", "188.134.122.31"},
+    {"unseed12", "72.38.179.122"},
+    {"unseed13", "76.74.177.224"},
+    {"unseed14", "31.24.80.156"},
+    {"unseed15", "46.65.33.21"},
+    {"unseed16", "62.31.88.142"},
+    {"unseed17", "81.100.119.142"},
+    {"unseed18", "81.149.181.135"},
+    {"unseed19", "82.9.170.174"},
+    {"unseed20", "82.69.125.194"},
+    {"unseed21", "84.45.63.215"},
+    {"unseed22", "85.210.2.42"},
+    {"unseed23", "86.25.137.37"},
+    {"unseed24", "86.26.167.73"},
+    {"unseed25", "86.129.206.40"},
+    {"unseed26", "86.167.107.72"},
+    {"unseed27", "86.180.216.163"},
+    {"unseed28", "86.181.250.67"},
+    {"unseed29", "86.185.117.11"},
+    {"unseed30", "87.115.160.6"},
+    {"unseed31", "92.21.38.37"},
+    {"unseed32", "93.97.116.5"},
+    {"unseed33", "94.173.112.226"},
+    {"unseed34", "109.145.196.8"},
+    {"unseed35", "109.152.123.95"},
+    {"unseed36", "109.158.241.250"},
 };
 
 void ThreadDNSAddressSeed(void* parg)
@@ -1026,7 +1065,7 @@ void ThreadDNSAddressSeed2(void* parg)
     printf("ThreadDNSAddressSeed started\n");
     int found = 0;
 
-    if (true /*!fTestNet*/)  // ppcoin enables dns seeding with testnet too
+    if (true /*!fTestNet*/)  // peercoin enables dns seeding with testnet too
     {
         printf("Loading addresses from DNS seeds (could take a while)\n");
 
@@ -1429,7 +1468,7 @@ void ThreadMessageHandler2(void* parg)
     }
 }
 
-// ppcoin: stake minter thread
+// peercoin: stake minter thread
 void static ThreadStakeMinter(void* parg)
 {
     printf("ThreadStakeMinter started\n");
@@ -1516,7 +1555,7 @@ bool BindListenPort(string& strError)
     {
         int nErr = WSAGetLastError();
         if (nErr == WSAEADDRINUSE)
-            strError = strprintf(_("Unable to bind to port %d on this computer.  PPCoin is probably already running."), ntohs(sockaddr.sin_port));
+            strError = strprintf(_("Unable to bind to port %d on this computer.  Peercoin is probably already running."), ntohs(sockaddr.sin_port));
         else
             strError = strprintf("Error: Unable to bind to port %d on this computer (bind returned error %d)", ntohs(sockaddr.sin_port), nErr);
         printf("%s\n", strError.c_str());
@@ -1638,7 +1677,7 @@ void StartNode(void* parg)
     // Get addresses from IRC and advertise ours
     // if (!CreateThread(ThreadIRCSeed, NULL))
     //     printf("Error: CreateThread(ThreadIRCSeed) failed\n");
-    // IRC disabled with ppcoin
+    // IRC disabled with peercoin
     printf("IRC seeding/communication disabled\n");
 
     // Send and receive from sockets, accept connections
@@ -1664,7 +1703,7 @@ void StartNode(void* parg)
     // Generate coins in the background
     GenerateBitcoins(GetBoolArg("-gen", false), pwalletMain);
 
-    // ppcoin: mint proof-of-stake blocks in the background
+    // peercoin: mint proof-of-stake blocks in the background
     if (!CreateThread(ThreadStakeMinter, pwalletMain))
         printf("Error: CreateThread(ThreadStakeMinter) failed\n");
 }
