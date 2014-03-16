@@ -2437,7 +2437,7 @@ Value listunspent(const Array& params, bool fHelp){
             "listunspent\n"
             "List unspent outputs");
     Array ret;
-    for (map<uint256, CWalletTx>::iterator it = pwalletMain->mapWallet.begin(); it != pwalletMain->mapWallet.end();
+    for (map<uint256, CWalletTx>::iterator it = pwalletMain->mapWallet.begin(); it != pwalletMain->mapWallet.end(); ++it)
     {
         const CWalletTx& tx = (*it).second;
         if(tx.IsFromMe())
