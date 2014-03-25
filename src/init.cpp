@@ -330,6 +330,7 @@ bool AppInit2(int argc, char* argv[])
         ShrinkDebugFile();
     printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     printf("PPCoin version %s (%s)\n", FormatFullVersion().c_str(), CLIENT_DATE.c_str());
+    printf("Startup time: %s\n", DateTimeStrFormat("%x %H:%M:%S", GetTime()).c_str());
     printf("Default data directory %s\n", GetDefaultDataDir().string().c_str());
 
     if (GetBoolArg("-loadblockindextest"))
