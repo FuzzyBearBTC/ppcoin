@@ -960,18 +960,6 @@ public:
 
     void UpdateTime(const CBlockIndex* pindexPrev);
 
-    // peercoin: entropy bit for stake modifier if chosen by modifier
-    unsigned int GetStakeEntropyBit() const
-    {
-        uint160 hashSig = Hash160(vchBlockSig);
-        if (fDebug && GetBoolArg("-printstakemodifier"))
-            printf("GetStakeEntropyBit: hashSig=%s", hashSig.ToString().c_str());
-        hashSig >>= 159; // take the first bit of the hash
-        if (fDebug && GetBoolArg("-printstakemodifier"))
-            printf(" entropybit=%d\n", hashSig.Get64());
-        return hashSig.Get64();
-    }
-
     // peercoin: two types of block: proof-of-work or proof-of-stake
     bool IsProofOfStake() const
     {
@@ -1142,6 +1130,7 @@ public:
     bool GetCoinAge(uint64& nCoinAge) const; // peercoin: calculate total coin age spent in block
     bool SignBlock(const CKeyStore& keystore);
     bool CheckBlockSignature() const;
+    unsigned int GetStakeEntropyBit() const; // ppcoin: entropy bit for stake modifier if chosen by modifier
 
 private:
     bool SetBestChainInner(CTxDB& txdb, CBlockIndex *pindexNew);

@@ -1,6 +1,6 @@
-Peercoin 0.3.1 BETA
+Peercoin (PPCoin) 0.4.0 BETA
 
-Copyright (c) 2011-2013 PPCoin Developers
+Copyright (c) 2011-2014 Peercoin (PPCoin) Developers
 Copyright (c) 2014 Peercoin Developers
 Distributed under the MIT/X11 software license, see the accompanying
 file license.txt or http://www.opensource.org/licenses/mit-license.php.
@@ -37,16 +37,17 @@ but allowing incoming connections helps the Peercoin network.
 Upgrade
 -------
 All your existing coins/transactions should be intact with the upgrade.
-To upgrade from 0.2, first backup wallet
+To upgrade from 0.3, first backup wallet in qt menu or by command line
 peercoind backupwallet <destination_backup_file>
 Then shutdown peercoind by
 peercoind stop
-Remove files inside wallet directory other than wallet.dat and peercoin.conf
-Start up the new peercoin-qt (0.3.0). It would start re-download of block chain.
+Uninstall v0.3 client, download and install v0.4 client.
+If upgrade is performed after upgrade deadline, blockchain re-download is
+required.
 
 
-See the documentation/wiki at the peercoin website:
-  http://www.ppcoin.org/
+See the documentation/wiki at github:
+  http://github.com/ppcoin/ppcoin
 for help and more information.
 
 
