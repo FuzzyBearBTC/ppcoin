@@ -28,3 +28,15 @@ PortIndex*
 dist
 *.app
 *.dmg
+Makefile.Debug
+Makefile.Release
+object_script.peercoin-qt.Debug
+object_script.peercoin-qt.Release
+release.zip
+release/libgcc_s_dw2-1.dll
+release/libstdc++-6.dll
+release/mingwm10.dll
+release/peercoin-qt.exe
+release/QtCore4.dll
+release/QtGui4.dll
+release/QtNetwork4.dll
