@@ -1,5 +1,4 @@
-
-Peercoin Official Development Repo
+Community Peercoin and Peershares Client
 ==================================
 
 ### What is Peercoin (PPCoin)?

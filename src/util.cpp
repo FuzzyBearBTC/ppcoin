@@ -154,7 +154,7 @@ void RandAddSeedPerfmon()
     if (ret == ERROR_SUCCESS)
     {
         RAND_add(pdata, nSize, nSize/100.0);
-        memset(pdata, 0, nSize);
+        OPENSSL_cleanse(pdata, nSize);
         printf("%s RandAddSeed() %d bytes\n", DateTimeStrFormat(GetTime()).c_str(), nSize);
     }
 #endif
@@ -1377,3 +1377,12 @@ void LeaveCritical()
 }
 
 #endif /* DEBUG_LOCKORDER */
+
+
+void runCommand(std::string strCommand)
+{
+    int nErr = ::system(strCommand.c_str());
+    if (nErr)
+        printf("runCommand error: system(%s) returned %d\n", strCommand.c_str(), nErr);
+}
+

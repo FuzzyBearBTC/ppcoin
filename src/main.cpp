@@ -1549,14 +1549,6 @@ bool Reorganize(CTxDB& txdb, CBlockIndex* pindexNew)
 }
 
 
-static void
-runCommand(std::string strCommand)
-{
-    int nErr = ::system(strCommand.c_str());
-    if (nErr)
-        printf("runCommand error: system(%s) returned %d\n", strCommand.c_str(), nErr);
-}
-
 // Called from inside SetBestChain: attaches a block to the new best chain being built
 bool CBlock::SetBestChainInner(CTxDB& txdb, CBlockIndex *pindexNew)
 {
@@ -2038,7 +2030,12 @@ bool ProcessBlock(CNode* pfrom, CBlock* pblock)
             // Limited duplicity on stake: prevents block flood attack
             // Duplicate stake allowed only when there is orphan child block
             if (setStakeSeenOrphan.count(pblock2->GetProofOfStake()) && !mapOrphanBlocksByPrev.count(hash) && !Checkpoints::WantedByPendingSyncCheckpoint(hash))
-                return error("ProcessBlock() : duplicate proof-of-stake (%s, %d) for orphan block %s", pblock2->GetProofOfStake().first.ToString().c_str(), pblock2->GetProofOfStake().second, hash.ToString().c_str());
+            {
+                error("ProcessBlock() : duplicate proof-of-stake (%s, %d) for orphan block %s", pblock2->GetProofOfStake().first.ToString().c_str(), pblock2->GetProofOfStake().second, hash.ToString().c_str());
+                //pblock2 will not be needed, free it
+                delete pblock2;
+                return false;
+            }
             else
                 setStakeSeenOrphan.insert(pblock2->GetProofOfStake());
         }
@@ -3939,6 +3936,15 @@ static bool fGenerateBitcoins = false;
 static bool fLimitProcessors = false;
 static int nLimitProcessors = -1;
 
+void SetMintWarning(const string& strNewWarning)
+{
+    if (strMintWarning != strNewWarning)
+    {
+        strMintWarning = strNewWarning;
+        MainFrameRepaint();
+    }
+}
+
 void BitcoinMiner(CWallet *pwallet, bool fProofOfStake)
 {
     printf("CPUMiner started for proof-of-%s\n", fProofOfStake? "stake" : "work");
@@ -3963,10 +3969,10 @@ void BitcoinMiner(CWallet *pwallet, bool fProofOfStake)
 
         while (pwallet->IsLocked())
         {
-            strMintWarning = strMintMessage;
+            SetMintWarning(strMintMessage);
             Sleep(1000);
         }
-        strMintWarning = "";
+        SetMintWarning("");
 
         //
         // Create new block
@@ -3987,10 +3993,10 @@ void BitcoinMiner(CWallet *pwallet, bool fProofOfStake)
             {
                 if (!pblock->SignBlock(*pwalletMain))
                 {
-                    strMintWarning = strMintMessage;
+                    SetMintWarning(strMintMessage);
                     continue;
                 }
-                strMintWarning = "";
+                SetMintWarning("");
                 printf("CPUMiner : proof-of-stake block found %s\n", pblock->GetHash().ToString().c_str()); 
                 SetThreadPriority(THREAD_PRIORITY_NORMAL);
                 CheckWork(pblock.get(), *pwalletMain, reservekey);
@@ -4045,10 +4051,10 @@ void BitcoinMiner(CWallet *pwallet, bool fProofOfStake)
                     assert(hash == pblock->GetHash());
                     if (!pblock->SignBlock(*pwalletMain))
                     {
-                        strMintWarning = strMintMessage;
+                        SetMintWarning(strMintMessage);
                         break;
                     }
-                    strMintWarning = "";
+                    SetMintWarning("");
                     SetThreadPriority(THREAD_PRIORITY_NORMAL);
                     CheckWork(pblock.get(), *pwalletMain, reservekey);
                     SetThreadPriority(THREAD_PRIORITY_LOWEST);
