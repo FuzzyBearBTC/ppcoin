@@ -8,6 +8,8 @@
 
 #include <QDateTime>
 
+static const int64_t nClientStartupTime = GetTime();
+
 ClientModel::ClientModel(OptionsModel *optionsModel, QObject *parent) :
     QObject(parent), optionsModel(optionsModel),
     cachedNumConnections(0), cachedNumBlocks(0)
@@ -98,3 +100,9 @@ QString ClientModel::clientName() const
 {
     return QString::fromStdString(CLIENT_NAME);
 }
+
+QString ClientModel::formatClientStartupTime() const
+{
+    return QDateTime::fromTime_t(nClientStartupTime).toString();
+}
+
