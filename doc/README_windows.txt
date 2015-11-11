@@ -1,6 +1,6 @@
-Peercoin (PPCoin) 0.4.0 BETA
+Peerunity 0.1.2
+Copyright (c) 2014 Peerunity developers
 
-Copyright (c) 2011-2014 Peercoin (PPCoin) Developers
 Distributed under the MIT/X11 software license, see the accompanying
 file license.txt or http://www.opensource.org/licenses/mit-license.php.
 This product includes software developed by the OpenSSL Project for use in
@@ -8,67 +8,76 @@ the OpenSSL Toolkit (http://www.openssl.org/).  This product includes
 cryptographic software written by Eric Young (eay@cryptsoft.com).
 
 
-Intro
------
-PPCoin is a free open source project derived from Bitcoin, with
-the goal of providing a long-term energy-efficient crypto-currency.
-Built on the foundation of Bitcoin, innovations such as proof-of-stake
-help further advance the field of crypto-currency.
+About Peerunity
+---------------
+Peerunity is a Peercoin network-compatible, community-developed wallet client.
+
+The project has been designed to provide people with a
+stable, secure, and feature-rich alternative to the Peercoin reference
+wallet (http://github.com/ppcoin/ppcoin). 
+
+To help faciliate broad community cooperation, a number of trusted 
+Peercoin/Peershares community leaders have write permissions to the project's 
+codebase, allowing for decentralization and continuity. Community members, 
+old and new, are encouraged to find ways to contribute to the success of 
+the project. If you have experience with programming, product design, 
+QA engineering, translation, or have a different set of skills that you want to 
+bring to the project, your involvement is appreciated!
 
 
-Setup
------
-After completing windows setup then run ppcoin-qt.
-Alternatively you can run windows command line (cmd) in ppcoin program dir.
-  cd daemon
-  ppcoind
-You would need to create a configuration file ppcoin.conf in the default
-wallet directory. Grant access to ppcoind/ppcoin-qt in anti-virus and firewall
-applications if necessary.
-
-The software automatically finds other nodes to connect to.  You can
-enable Universal Plug and Play (UPnP) with your router/firewall
-or forward port 9901 (TCP) to your computer so you can receive
-incoming connections.  PPCoin works without incoming connections,
-but allowing incoming connections helps the PPCoin network.
+Development Roadmap
+-------------------
+* Updated branding and wallet design
+* Integrated support for multiple Peershares offerings
+* An improved minting experience
 
 
-Upgrade
--------
-All your existing coins/transactions should be intact with the upgrade.
-To upgrade from 0.3, first backup wallet in qt menu or by command line
-ppcoind backupwallet <destination_backup_file>
-Then shutdown ppcoind by
-ppcoind stop
-Uninstall v0.3 client, download and install v0.4 client.
-If upgrade is performed after upgrade deadline, blockchain re-download is
-required.
+Resources
+---------
+Peerunity source code: https://github.com/Peerunity/Peerunity
+
+For the most current instructions covering how to compile Peerunity from 
+source on a variety of operating systems, please visit:
+https://github.com/Peerunity/Peerunity/tree/master/doc
+
+Open software issues can be viewed, and new issues can be reported at:
+https://github.com/Peerunity/Peerunity/issues?state=open
+
+Peerunity discussion forums (hosted by PeercoinTalk.org): 
+http://www.peercointalk.org/index.php?board=64.0
 
 
-See the documentation/wiki at github:
-  http://github.com/ppcoin/ppcoin
-for help and more information.
+
+Acknowledgements
+----------------
+Peerunity owes it's existance to the time and effort put forth by
+the developers and supporters of the following projects:
 
 
-------------------
-Bitcoin 0.6.3 BETA
+	Peercoin (PPCoin) 0.4.0 BETA
+	Copyright (c) 2011-2014 Bitcoin Developers
 
-Copyright (c) 2009-2012 Bitcoin Developers
-Distributed under the MIT/X11 software license, see the accompanying
-file license.txt or http://www.opensource.org/licenses/mit-license.php.
-This product includes software developed by the OpenSSL Project for use in
-the OpenSSL Toolkit (http://www.openssl.org/).  This product includes
-cryptographic software written by Eric Young (eay@cryptsoft.com).
+	Distributed under the MIT/X11 software license
+	(http://www.opensource.org/licenses/mit-license.php)
 
+	Peercoin is a free open source project with the goal of providing a 
+	long-term energy-efficient crypto-currency. Built on the foundation 
+	of Bitcoin, innovations such as proof-of-stake help further advance 
+	the field of crypto-currency.
 
-Intro
------
-Bitcoin is a free open source peer-to-peer electronic cash system that is
-completely decentralized, without the need for a central server or trusted
-parties.  Users hold the crypto keys to their own money and transact directly
-with each other, with the help of a P2P network to check for double-spending.
+	http://github.com/ppcoin/ppcoin
 
 
-See the bitcoin wiki at:
-  https://en.bitcoin.it/wiki/Main_Page
-for more help and information.
+	------------------
+	Bitcoin 0.6.3 BETA
+	Copyright (c) 2009-2012 Bitcoin Developers
+
+	Distributed under the MIT/X11 software license
+	(http://www.opensource.org/licenses/mit-license.php)
+
+	Bitcoin is a free open source peer-to-peer electronic cash system that is
+	completely decentralized, without the need for a central server or trusted
+	parties.  Users hold the crypto keys to their own money and transact directly
+	with each other, with the help of a P2P network to check for double-spending.
+
+	https://en.bitcoin.it/wiki/Main_Page

@@ -67,11 +67,6 @@ Copyright: http://www.everaldo.com
 License: LGPL
 Comment: Icon Pack: Crystal SVG
 
-Files: src/qt/res/icons/bitcoin.png, src/qt/res/icons/toolbar.png
-Copyright: Bitboy (optimized for 16x16 by Wladimir van der Laan)
-License: PUB-DOM
-Comment: Site: http://forum.bitcoin.org/?topic=1756.0
-
 Files:  scripts/img/reload.xcf, src/qt/res/movies/update_spinner.mng
 Copyright: Everaldo (Everaldo Coelho)
 License: GPL-3+

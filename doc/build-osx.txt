@@ -13,10 +13,10 @@ Laszlo Hanyecz <solar@heliacal.net>
 Douglas Huff <dhuff@jrbobdobbs.org>
 
 Modified for PPCoin by Jeff Larkin <jefflarkin@gmail.com>
-Modified for PeerUnity by Ben Rossi <ben@rossinet.com>
+Modified for Peerunity by Ben Rossi <ben@rossinet.com>
 
 
-See readme-qt.rst for instructions on building the PeerUnity community version of PPCoin QT, the
+See readme-qt.rst for instructions on building the Peerunity community version of PPCoin QT, the
 graphical user interface.
 
 Tested on 10.5 and 10.6 intel.  PPC is not supported because it's big-endian.

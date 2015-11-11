@@ -45,7 +45,7 @@ namespace boost {
 #ifdef _WIN32_IE
 #undef _WIN32_IE
 #endif
-#define _WIN32_IE 0x0400
+#define _WIN32_IE 0x0501
 #define WIN32_LEAN_AND_MEAN 1
 #ifndef NOMINMAX
 #define NOMINMAX
@@ -1071,7 +1071,7 @@ void AddTimeData(const CNetAddr& ip, int64 nTime)
                 if (!fMatch)
                 {
                     fDone = true;
-                    string strMessage = _("Warning: Please check that your computer's date and time are correct.  If your clock is wrong PPCoin will not work properly.");
+                    string strMessage = _("Warning: Please check that your computer's date and time are correct.  If your clock is wrong Peerunity will not work properly.");
                     strMiscWarning = strMessage;
                     printf("*** %s\n", strMessage.c_str());
                     ThreadSafeMessageBox(strMessage+" ", string("PPCoin"), wxOK | wxICON_EXCLAMATION);
@@ -1117,6 +1117,8 @@ std::string FormatSubVersion(const std::string& name, int nClientVersion, const 
         ss << "(" << boost::algorithm::join(comments, "; ") << ")";
     ss << "/";
     ss << "Peercoin:" << FormatVersion(PPCOIN_VERSION);
+    ss << "/";
+    ss << "Peerunity:" << FormatVersion(PEERUNITY_VERSION);
     ss << "(" << CLIENT_BUILD << ")/";
     return ss.str();
 }

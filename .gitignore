@@ -28,3 +28,5 @@ PortIndex*
 dist
 *.app
 *.dmg
+peerunity
+src/peerunityd
