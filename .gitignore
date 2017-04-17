@@ -1,0 +1,34 @@
+src/*.exe
+src/ppcoin
+src/ppcoind
+src/test_ppcoin
+.*.swp
+*.*~*
+*.bak
+*.rej
+*.orig
+*.o
+*.patch
+.ppcoin
+
+# Compilation and Qt preprocessor part
+*.qm
+Makefile
+ppcoin-qt
+PPCoin-Qt.app
+
+# Unit-tests
+Makefile.test
+ppcoin-qt_test
+
+# Resources cpp
+qrc_*.cpp
+
+# Qt creator
+*.pro.user
+
+# Mac specific
+.DS_Store
+build
+
+!src/leveldb-*/Makefile
